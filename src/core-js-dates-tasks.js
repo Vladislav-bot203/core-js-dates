@@ -66,19 +66,10 @@ function getNextFriday(date) {
   return nextFriday;
 }
 
-/**
- * Returns the number of days in a specified month and year.
- *
- * @param {number} month - The month as a number (1 for January, 2 for February, etc.).
- * @param {number} year - The year as a four-digit number.
- * @return {number}
- *
- * @example:
- * 1, 2024 => 31
- * 2, 2024 => 29
- */
-function getCountDaysInMonth(/* month, year */) {
-  throw new Error('Not implemented');
+function getCountDaysInMonth(month, year) {
+  const nextMonth = new Date(year, month, 1);
+  const lastMonth = new Date(nextMonth - 1);
+  return lastMonth.getDate();
 }
 
 /**
