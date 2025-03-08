@@ -48,19 +48,22 @@ function getDayName(date) {
   }
 }
 
-/**
- * Returns the date of the next Friday from a given date.
- *
- * @param {Date} date
- * @return {Date}
- *
- * @example:
- * Date('2024-02-03T00:00:00Z') => Date('2024-02-09T00:00:00Z')
- * Date('2024-02-13T00:00:00Z') => Date('2024-02-16T00:00:00Z')
- * Date('2024-02-16T00:00:00Z') => Date('2024-02-23T00:00:00Z')
- */
-function getNextFriday(/* date */) {
-  throw new Error('Not implemented');
+function getNextFriday(date) {
+  const dayOfWeek = date.getDay();
+
+  let daysUntilFriday;
+  if (dayOfWeek === 5) {
+    daysUntilFriday = 7;
+  } else if (dayOfWeek < 5) {
+    daysUntilFriday = 5 - dayOfWeek;
+  } else {
+    daysUntilFriday = 6;
+  }
+
+  const nextFriday = new Date(date);
+  nextFriday.setDate(date.getDate() + daysUntilFriday);
+
+  return nextFriday;
 }
 
 /**
